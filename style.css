@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+
+* {
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  position: relative;
+  width: 100%;
+  background: #020617;
+  color: aliceblue;
+  font-family: ubuntu;
+}
+
+.back-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  background-image: radial-gradient(
+    circle 500px at 50% 300px,
+    rgba(16, 185, 129, 0.35),
+    transparent
+  );
+}
+
+.heading {
+  text-align: center;
+  padding-top: 50px;
+}
+
+.heading > a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.heading > a:hover {
+  cursor: auto;
+}
