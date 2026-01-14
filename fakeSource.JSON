@@ -1,0 +1,294 @@
+[
+  {
+    "ticker": "AAPL",
+    "queryCount": 1,
+    "resultsCount": 1,
+    "adjusted": true,
+    "results": [
+      {
+        "v": 7452891,
+        "vw": 172.8453,
+        "o": 173.1,
+        "c": 172.65,
+        "h": 174.2,
+        "l": 171.95,
+        "t": 1766811600000,
+        "n": 284512
+      }
+    ],
+    "status": "OK",
+    "request_id": "a7c9f2d4b1e84c9a9d3f6b2a5d7e8f10",
+    "count": 1,
+    "fetched_data": "dates"
+  },
+  {
+    "ticker": "MSFT",
+    "queryCount": 1,
+    "resultsCount": 1,
+    "adjusted": true,
+    "results": [
+      {
+        "v": 8842131,
+        "vw": 487.3137,
+        "o": 486.705,
+        "c": 487.71,
+        "h": 488.12,
+        "l": 485.96,
+        "t": 1766725200000,
+        "n": 329435
+      }
+    ],
+    "status": "OK",
+    "request_id": "199189172899d3af145ba96d6062a0ee",
+    "count": 1,
+    "fetched_data": "dates"
+  },
+  {
+    "ticker": "GOOG",
+    "queryCount": 1,
+    "resultsCount": 1,
+    "adjusted": true,
+    "results": [
+      {
+        "v": 5231456,
+        "vw": 142.5632,
+        "o": 141.9,
+        "c": 142.75,
+        "h": 143.2,
+        "l": 141.5,
+        "t": 1766898000000,
+        "n": 198734
+      }
+    ],
+    "status": "OK",
+    "request_id": "d4f8b7e2c9a14f3b8e6d2a1c7f9b0e12",
+    "count": 1,
+    "fetched_data": "dates"
+  },
+  {
+    "ticker": "TSLA",
+    "queryCount": 5,
+    "resultsCount": 5,
+    "adjusted": true,
+    "results": [
+      {
+        "v": 6452891,
+        "vw": 245.7321,
+        "o": 246.1,
+        "c": 245.5,
+        "h": 247.2,
+        "l": 244.8,
+        "t": 1766725200000,
+        "n": 215678
+      },
+      {
+        "v": 7123456,
+        "vw": 248.4567,
+        "o": 247.95,
+        "c": 249.1,
+        "h": 250,
+        "l": 247.2,
+        "t": 1766811600000,
+        "n": 228934
+      },
+      {
+        "v": 5932789,
+        "vw": 243.8923,
+        "o": 244.5,
+        "c": 243.25,
+        "h": 245.1,
+        "l": 242.8,
+        "t": 1766898000000,
+        "n": 198765
+      },
+      {
+        "v": 6845678,
+        "vw": 251.1345,
+        "o": 250.75,
+        "c": 251.9,
+        "h": 252.5,
+        "l": 249.8,
+        "t": 1766984400000,
+        "n": 223456
+      },
+      {
+        "v": 7678234,
+        "vw": 253.8234,
+        "o": 254.1,
+        "c": 253.75,
+        "h": 255.2,
+        "l": 252.5,
+        "t": 1767070800000,
+        "n": 236789
+      }
+    ],
+    "status": "OK",
+    "request_id": "dummy_tsla_batch_987654321",
+    "count": 5,
+    "fetched_data": "dates"
+  },
+  {
+    "ticker": "AMZN",
+    "queryCount": 2,
+    "resultsCount": 2,
+    "adjusted": true,
+    "results": [
+      {
+        "v": 4892341,
+        "vw": 152.4321,
+        "o": 152.8,
+        "c": 153.25,
+        "h": 154.1,
+        "l": 151.95,
+        "t": 1766725200000,
+        "n": 176543
+      },
+      {
+        "v": 5123789,
+        "vw": 155.6789,
+        "o": 155.2,
+        "c": 156.05,
+        "h": 156.8,
+        "l": 154.75,
+        "t": 1766811600000,
+        "n": 189234
+      }
+    ],
+    "status": "OK",
+    "request_id": "dummy_amzn_batch_24680",
+    "count": 2,
+    "fetched_data": "dates"
+  },
+  {
+    "ticker": "NFLX",
+    "queryCount": 1,
+    "resultsCount": 1,
+    "adjusted": true,
+    "results": [
+      {
+        "v": 3452891,
+        "vw": 412.5632,
+        "o": 413.1,
+        "c": 412.75,
+        "h": 415.2,
+        "l": 411.5,
+        "t": 1766725200000,
+        "n": 145678
+      }
+    ],
+    "status": "OK",
+    "request_id": "dummy_nflx_singleday_13579",
+    "count": 1,
+    "fetched_data": "dates"
+  },
+  {
+    "ticker": "META",
+    "queryCount": 1,
+    "resultsCount": 1,
+    "adjusted": true,
+    "results": [
+      {
+        "v": 2893451,
+        "vw": 378.4521,
+        "o": 379.1,
+        "c": 377.85,
+        "h": 380.2,
+        "l": 376.95,
+        "t": 1766725200000,
+        "n": 134567
+      }
+    ],
+    "status": "OK",
+    "request_id": "dummy_meta_singleday_001",
+    "count": 1,
+    "fetched_data": "dates"
+  },
+  {
+    "ticker": "NVDA",
+    "queryCount": 1,
+    "resultsCount": 1,
+    "adjusted": true,
+    "results": [
+      {
+        "v": 4562891,
+        "vw": 612.7345,
+        "o": 613.2,
+        "c": 611.75,
+        "h": 615,
+        "l": 610.5,
+        "t": 1766811600000,
+        "n": 178934
+      }
+    ],
+    "status": "OK",
+    "request_id": "dummy_nvda_singleday_002",
+    "count": 1,
+    "fetched_data": "dates"
+  },
+  {
+    "ticker": "IBM",
+    "queryCount": 1,
+    "resultsCount": 1,
+    "adjusted": true,
+    "results": [
+      {
+        "v": 1892341,
+        "vw": 142.5632,
+        "o": 143,
+        "c": 142.25,
+        "h": 144.1,
+        "l": 141.8,
+        "t": 1766898000000,
+        "n": 95678
+      }
+    ],
+    "status": "OK",
+    "request_id": "dummy_ibm_singleday_003",
+    "count": 1,
+    "fetched_data": "dates"
+  },
+  {
+    "ticker": "ORCL",
+    "queryCount": 1,
+    "resultsCount": 1,
+    "adjusted": true,
+    "results": [
+      {
+        "v": 2345678,
+        "vw": 118.4521,
+        "o": 118.9,
+        "c": 119.25,
+        "h": 120,
+        "l": 117.85,
+        "t": 1766984400000,
+        "n": 102345
+      }
+    ],
+    "status": "OK",
+    "request_id": "dummy_orcl_singleday_004",
+    "count": 1,
+    "fetched_data": "dates"
+  },
+  {
+    "ticker": "INTC",
+    "queryCount": 1,
+    "resultsCount": 1,
+    "adjusted": true,
+    "results": [
+      {
+        "v": 3123456,
+        "vw": 46.8234,
+        "o": 47.1,
+        "c": 46.75,
+        "h": 47.5,
+        "l": 46.2,
+        "t": 1767070800000,
+        "n": 112678
+      }
+    ],
+    "status": "OK",
+    "request_id": "dummy_intc_singleday_005",
+    "count": 1,
+    "fetched_data": "dates"
+  }
+]
