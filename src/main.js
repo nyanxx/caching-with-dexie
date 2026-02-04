@@ -1,8 +1,11 @@
 import Dexie from "dexie";
 
 // Init Deixe
+// Creating a new Dexie instance. "CacheDatabase" will be the name of database.  
 const db = new Dexie("CacheDatabase");
-db.version(1).stores({ items: "name" });
+// Defining schema for version 1 (Dexie uses versioning to manage schema upgrade over time)
+db.version(1)
+  .stores({ items: "name" }); // Creating store (equivalent to tables in other DB) with store name = "items" and it's primary key will be "name"  
 
 const tickerObj = await get("GOOG");
 const tickerObjMany = await getMany(["IBM", "GOOG", "FAIL", "TSLA"]);
@@ -43,6 +46,7 @@ async function getMany(names) {
 
 /** Check cache */
 async function getFromCache(name) {
+  // ✨ Getting Data
   return db.items.get(name);
 }
 
@@ -85,7 +89,11 @@ async function fetchTickerDataFromSource(name) {
 async function addInCache(name, dataObject) {
   try {
     if (dataObject) {
-      // [?] Should i be using .put or .add
+      /** 
+      * ✨ Inserting Data
+      * .add : Inserts a new record
+      * .put : Inserts or updates a record
+      */
       await db.items.put({
         name: name,
         data: dataObject,
