@@ -1,4 +1,16 @@
-export const tickerData = [
+export type TickerObj = {
+  ticker: string,
+  queryCount: number,
+  resultsCount: number,
+  adjusted: boolean,
+  results: Record<string, number>[]
+  status: string,
+  request_id: string,
+  count: number,
+  fetched_data: string,
+}
+
+export const tickerData: TickerObj[] = [
   {
     ticker: "AAPL",
     queryCount: 1,

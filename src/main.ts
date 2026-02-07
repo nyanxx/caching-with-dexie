@@ -1,8 +1,15 @@
 import Dexie from "dexie";
+import type { TickerObj } from "./assets/fakeSource";
+
+type CacheData = {
+  name: string
+  data: TickerObj
+  timestamp: number
+}
 
 // Init Deixe
 // Creating a new Dexie instance. "CacheDatabase" will be the name of database.  
-const db = new Dexie("CacheDatabase");
+const db: Dexie = new Dexie("CacheDatabase");
 // Defining schema for version 1 (Dexie uses versioning to manage schema upgrade over time)
 db.version(1)
   .stores({ items: "name" }); // Creating store (equivalent to tables in other DB) with store name = "items" and it's primary key will be "name"  
@@ -13,13 +20,14 @@ console.log(tickerObj);
 console.log(tickerObjMany);
 
 /** Get single item */
-async function get(name) {
+async function get(name: string): Promise<TickerObj | undefined> {
   try {
     const response = await getFromCache(name);
+    // console.log(Object.prototype.toLocaleString.call(response))
     if (response) {
       if (!isExpired(response.timestamp)) {
         console.log(`Serving "${name}" from CACHE`);
-        return response;
+        return response.data;
       }
     } else {
       console.log(`"${name}" is not in CACHE or is expired!`);
@@ -37,23 +45,24 @@ async function get(name) {
 }
 
 /** Get multiple items  */
-async function getMany(names) {
-  const arrayOfPromises = names.map((tick) => get(tick));
-  const result = await Promise.all(arrayOfPromises);
+async function getMany(names: string[]): Promise<TickerObj[]> {
+  const arrayOfPromises: Promise<TickerObj | undefined>[] = names.map((tick: string): Promise<TickerObj | undefined> => get(tick));
+  const result: (TickerObj | undefined)[] = await Promise.all(arrayOfPromises);
   // Remove undefined entries from result array
-  return result.filter(Boolean);
+  // const filteredResult: TickerObj[] = result.filter(Boolean);
+  return result.filter((tickerObj: TickerObj | undefined): tickerObj is TickerObj => tickerObj !== undefined)
 }
 
 /** Check cache */
-async function getFromCache(name) {
+async function getFromCache(name: string): Promise<Dexie.Promise<CacheData>> {
   // ✨ Getting Data
-  return db.items.get(name);
+  return db.table("items").get(name);
 }
 
 /** Expiry check */
-function isExpired(timestamp) {
+function isExpired(timestamp: number): boolean {
   // The item is expired if the current time "Date.now()" is greater than the expiration time "ttl".
-  const ttl = 24 * 60 * 60 * 1000;
+  const ttl: number = 24 * 60 * 60 * 1000;
   return Date.now() - timestamp > ttl;
 }
 
@@ -61,16 +70,14 @@ function isExpired(timestamp) {
  * Fetch from source JSON file
  * Example usage: console.log(await fetchTickerDataFromSource("IBM"));
  **/
-async function fetchTickerDataFromSource(name) {
+async function fetchTickerDataFromSource(name: string): Promise<TickerObj | undefined> {
   try {
     console.log(`Trying to fetch "${name}" from source...`);
-    const resopnse = await fetch("../fakeSource.JSON");
-    const jsonArr = await resopnse.json();
-    const tickerArr = jsonArr.filter((tickerObject) => {
-      if (tickerObject.ticker === name) {
-        return tickerObject;
-      }
-    });
+    const response: Response = await fetch("/fakeSource.json");
+    let tickerArr: TickerObj[] = await response.json();
+
+    tickerArr = tickerArr.filter((tickerObject: TickerObj): boolean => (tickerObject.ticker === name));
+
     if (tickerArr[0]) {
       // Returning the object within the array
       return tickerArr[0];
@@ -81,24 +88,25 @@ async function fetchTickerDataFromSource(name) {
     }
   } catch (err) {
     console.log("Error:- Fetching from source failed!", err);
-    return null;
+    return undefined;
   }
 }
 
 /** Add to cache  */
-async function addInCache(name, dataObject) {
+async function addInCache(name: string, dataObject: TickerObj) {
   try {
     if (dataObject) {
+      const cacheData: CacheData = {
+        name: name,
+        data: dataObject,
+        timestamp: Date.now()
+      }
       /** 
       * ✨ Inserting Data
       * .add : Inserts a new record
       * .put : Inserts or updates a record
       */
-      await db.items.put({
-        name: name,
-        data: dataObject,
-        timestamp: Date.now(),
-      });
+      await db.table("items").put(cacheData);
       console.log(`"${name}" cached successfully!`);
     }
   } catch (error) {
@@ -107,7 +115,7 @@ async function addInCache(name, dataObject) {
 }
 
 /** Get ticker data from fakeSource.js */
-// import { tickerData } from "../fakeSource";
+// import { tickerData } from "./assets/fakeSource";
 // function getTickerDataFromJS(name) {
 //   const data = tickerData.filter((tickerName) => {
 //     if (tickerName.ticker == name) {
